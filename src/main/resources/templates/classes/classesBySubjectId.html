@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>предмет</title>
+    <style>
+        .btn {
+            display: inline-block; /* Строчно-блочный элемент */
+            background: #8C959D; /* Серый цвет фона */
+            color: #fff; /* Белый цвет текста */
+            padding: 1rem 1.5rem; /* Поля вокруг текста */
+            text-decoration: none; /* Убираем подчёркивание */
+            border-radius: 3px; /* Скругляем уголки */
+            margin-bottom: 10px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="${oneSubject.getTitle()}"></h1>
+
+<h2 th:text="'Выберите класс '">test</h2>
+    <table th:each="class:${classes}">
+        <a th:href="@{/mark(classId=${class.getId()}, subjectId=${oneSubject.getId()})}" th:text="${class.getNumber()} + ' класс'"
+         class="btn"></a>
+    </table>
+    <hr/>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>edit</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/pupil/{id}(id=${updatePupil.getId_pupil()})}" th:object="${updatePupil}">
+  <label for="name">Name of pupil:</label>
+  <input name= "name" type= "text" th:field="*{name_pupil}"id="name"/>
+  <br>
+  <label for="class">Class:</label>
+    <input name= "class" type= "text" th:field="*{class_pupil}"id="class"/>
+  <br>
+  <input type="submit" value="UPDATE!"/>
+</form>
+</body>
+</html>

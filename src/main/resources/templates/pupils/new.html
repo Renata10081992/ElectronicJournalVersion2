@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/pupil(classId=${classId})}" th:object="${newPupil}">
+    <label for="firstname">First name:</label>
+    <input name= "firstname" type= "text" th:field="*{firstname}"id="firstname"/>
+    <div style="color: red" th:if="${#fields.hasErrors('firstname')}"th:errors="*{firstname}">ERROR</div>
+    <br>
+    <label for="lastname">Last Name:</label>
+    <input name= "lastname" type= "text" th:field="*{lastname}"id="lastname"/>
+    <div style="color: red" th:if="${#fields.hasErrors('lastname')}"th:errors="*{lastname}">ERROR</div>
+    <br>
+    <input type="hidden" th:value="${newPupil.getClass_()}" name="class"/>
+    <input type="submit" value="Сохранить"/>
+</form>
+
+</body>
+</html>

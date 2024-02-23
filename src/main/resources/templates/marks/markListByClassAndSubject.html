@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>класс</title>
+</head>
+<body>
+<h2 th:text="'Номер класса ' + ${oneClass.getNumber()}">test</h2>
+
+<h3 th:text="'Название предмета ' + ${subject.getTitle()}">test</h3>
+
+<div>
+    <div th:each="pupilMarksDto:${pupilMarksMapping}">
+        <span th:text="${pupilMarksDto.getPupil().getLastname()}"></span>
+        <div style="display: inline-block; width: 20px; outline: 1px solid mediumblue; margin-left: 20px"
+             th:each="mark:${pupilMarksDto.getMarks()}" th:text="${mark.getMarkValue()}" id="mark"></div>
+        <div style="display: inline-block" th:text="${pupilMarksDto.getGpa()}"></div>
+        <form th:method="POST" th:action="@{/mark(subjectId=${subject.getId()}, pupilId=${pupilMarksDto.getPupil().getId()})}" th:object="${newMark}">
+            <div style="margin-top: 10px; margin-bottom: 10px">
+                <input style="display: inline-block" type="text" name="markValue"/>
+                <div style="color: red" th:if="${#fields.hasErrors('markValue')}" th:errors="*{markValue}">ERROR</div>
+                <input style="display: inline-block" type="submit" value="Поставить оценку"/>
+            </div>
+        </form>
+        <br>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>список учеников</title>
+</head>
+<body>
+<div th:each="pup:${pupils}">
+    <a th:href="@{/pupil/{id}(id=${pup.getId_pupil()})}" th:text="${pup.getName_pupil()}"></a>
+</div>
+<hr/>
+<a href="/pupil/new">Create new pupil </a>
+</body>
+</html>
